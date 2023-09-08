@@ -5,18 +5,18 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/melbahja/goph"
 	"log"
-	"os"
+	
 )
 
 func main() {
 	godotenv.Load(".env")
-	auth, err := goph.Key(os.Getenv("PATH"), "")
+	auth, err := goph.Key("./aksc.pem", "")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	client, err := goph.New("root", os.Getenv("IP_ADDRESS"), auth)
+	client, err := goph.New("root","3.210.248.187", auth)
 
 	if err != nil {
 		log.Fatal(err)
