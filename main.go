@@ -24,19 +24,30 @@ func main() {
 	}
 	defer client.Close()
 
-	out, err := client.Run("ls -la")
+	for {
+		dir, _ := client.Run("pwd")
+		fmt.Printf("%s:%s$ ", client.User(), dir[:len(dir)-1])
+		var comm string
+		fmt.Scan((&comm))
 
-	fmt.Println(string(out))
+		out, _ := client.Run(comm)
+		fmt.Printf("%s", out)
+		if comm == "exit" {
+			break
+		}
+	}
 
-	var in int = 0
-	fmt.Println("Did you need to close the connection");
+	// fmt.Println(string(out))
 
-  fmt.Scan(&in);
-	for in !=1{}
+	// var in int = 0
+	// fmt.Println("Did you need to close the connection")
+
+	// fmt.Scan(&in)
+	// for in != 1 {
+	// }
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	
 }
