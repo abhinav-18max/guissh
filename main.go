@@ -26,9 +26,17 @@ func main() {
 
 	out, err := client.Run("ls -la")
 
+	fmt.Println(string(out))
+
+	var in int = 0
+	fmt.Println("Did you need to close the connection");
+
+  fmt.Scan(&in);
+	for in !=1{}
+
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(string(out))
+	
 }
